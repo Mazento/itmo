@@ -8,9 +8,41 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>Itmo</servlet-name>
 		<servlet-class>com.ItmoServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>Pract31Servlet</servlet-name>
+		<servlet-class>com.Pract31Servlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Pract32Servlet</servlet-name>
+		<servlet-class>com.Pract32Servlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Pract33Servlet</servlet-name>
+		<servlet-class>com.Pract33Servlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Pract34Servlet</servlet-name>
+		<servlet-class>com.Pract34Servlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>Itmo</servlet-name>
 		<url-pattern>/itmo</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Pract31Servlet</servlet-name>
+		<url-pattern>/pract31servlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Pract32Servlet</servlet-name>
+		<url-pattern>/pract32servlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Pract33Servlet</servlet-name>
+		<url-pattern>/pract33servlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Pract34Servlet</servlet-name>
+		<url-pattern>/pract34servlet</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>

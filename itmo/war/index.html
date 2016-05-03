@@ -9,19 +9,128 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Hello App Engine</title>
+    <link rel="stylesheet" href="css/main.css">
+    <title>Web technology site</title>
   </head>
+
+  <script src="jquery-2.2.3.min.js"></script>
+    
+  <script>
+      function getServletResult(url) {
+        result = "";
+        xhr = new XMLHttpRequest();
+        xhr.open("GET", url, false);
+        xhr.onload = function (e) {
+          if (xhr.readyState === 4)
+            if (xhr.status === 200)
+                result = xhr.responseText;
+        }
+        xhr.send(null);
+        return result;
+      }
+
+      $(function() {
+          $("#btnRequest31").click( function() {
+              var m = $('#pr31m').val();
+              var n = $('#pr31n').val();
+              url = "/pract31servlet?m="+m+"&n="+n;
+              response = getServletResult(url);
+              if (response)
+                $("#divResult31").html("Closest number to 10 is " + result);
+              else
+                $("#divResult31").html("Please, insert correct values");
+              // var res = load("/pract31servlet?m="+m+"&n="+n);
+              // $("#divResult31").text = res;
+          });
+
+          $("#btnRequest32").click( function() {
+              var a = $('#pr32a').val();
+              var b = $('#pr32b').val();
+              var c = $('#pr32c').val();
+              url = "/pract32servlet?a="+a+"&b="+b+"&c="+c;
+              response = getServletResult(url);
+              if (response)
+                $("#divResult32").html(result);
+              else
+                $("#divResult32").html("Please, insert correct values");
+          });
+
+          $("#btnRequest33").click( function() {
+              url = "/pract33servlet";
+              response = getServletResult(url);
+              if (response)
+                $("#divResult33").html(result);
+          });
+
+          $("#btnRequest34").click( function() {
+              url = "/pract34servlet";
+              response = getServletResult(url);
+              if (response)
+                $("#divResult34").html(result);
+          });
+      });
+  </script>
 
   <body>
     <h1>Hello App Engine!</h1>
-	
-    <table>
-      <tr>
-        <td colspan="2" style="font-weight:bold;">Available Servlets:</td>        
-      </tr>
-      <tr>
-        <td><a href="itmo">Itmo</a></td>
-      </tr>
-    </table>
+    <div class="practice">
+      <div class="pract31">
+        <h3>Practice 3.1</h3>
+        <a>Print closest number to 10 from m and n</a>
+        <div class="form">
+          m = 
+          <input id="pr31m" type="text">
+          <br>
+          n = 
+          <input id="pr31n" type="text">
+          <br>
+          <button id="btnRequest31">Send</button>
+          <br>
+          <div id="divResult31"></div>
+        </div>
+      </div>
+
+      <br><br>
+
+      <div class="pract32">
+        <h3>Practice 3.2</h3>
+        <a>Solve quadratic equation</a>
+        <div class="form">
+          <input type="text" id="pr32a">
+          x<sup>2</sup>+
+          <input id="pr32b" type="text">
+          x+
+          <input id="pr32c" type="text">
+          =0
+          <br>
+          <button id="btnRequest32">Solve</button>
+          <br>
+          <div id="divResult32"></div>
+        </div>
+      </div>
+
+      <br><br>
+      
+      <h3>Practice 3.3</h3>
+      <a>Get 8x5 array with values in range [10;99]</a>
+      <div class="form">
+          <button id="btnRequest33">Get array</button>
+          <br>
+          <div id="divResult33"></div>
+      </div>
+
+      <br><br>
+
+      <h3>Practice 3.4</h3>
+      <a>Get 8x5 array with values in range [-99;99]. Print maximum value of the array</a>
+      <div class="form">
+          <button id="btnRequest34">Get array</button>
+          <br>
+          <div id="divResult34"></div>
+      </div>
+
+    </div>
+
+    <script src="js/main.js"></script>
   </body>
 </html>
