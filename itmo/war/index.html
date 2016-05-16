@@ -68,6 +68,15 @@
               if (response)
                 $("#divResult34").html(result);
           });
+
+          $('#btnRequestConstrForm').click( function() { 
+                var email = $('#txtEmail').val();
+                var password = $('#txtPassword').val();
+                var name = $('#txtName').val();
+                var phone = $('#txtPhone').val();
+                var gender = $('#gender').val();
+                $('#formConstrainssResult').load( "/formconstrains?email="+email+"&password="+password+"&name="+name+"&phone="+phone+"&gender="+gender);
+          });
       });
   </script>
 
@@ -128,6 +137,29 @@
           <br>
           <div id="divResult34"></div>
       </div>
+
+      <br>
+
+      <h3>Constrains check form</h3>
+      <a>Email</a>
+      <input id="txtEmail" type="text">
+      <br><br>
+      <a>Password</a>
+      <input id="txtPassword" type="password">
+      <br><br>
+      <a>Name</a>
+      <input id="txtName" type="text">
+      <br><br>
+      <a>Phone</a>
+      <input id="txtPhone" type="text">
+      <br><br>
+      <select id="gender">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+      </select>
+      <br><br>
+      <button id="btnRequestConstrForm">Send</button>
+      <div id="formConstrainssResult"></div>
 
     </div>
 
