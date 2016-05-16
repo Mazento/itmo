@@ -10,19 +10,19 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet>
 	<servlet>
 		<servlet-name>Pract31Servlet</servlet-name>
-		<servlet-class>com.Pract31Servlet</servlet-class>
+		<servlet-class>com.practice.Pract31Servlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>Pract32Servlet</servlet-name>
-		<servlet-class>com.Pract32Servlet</servlet-class>
+		<servlet-class>com.practice.Pract32Servlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>Pract33Servlet</servlet-name>
-		<servlet-class>com.Pract33Servlet</servlet-class>
+		<servlet-class>com.practice.Pract33Servlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>Pract34Servlet</servlet-name>
-		<servlet-class>com.Pract34Servlet</servlet-class>
+		<servlet-class>com.practice.Pract34Servlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Itmo</servlet-name>
