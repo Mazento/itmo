@@ -9,10 +9,12 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/map.css">
     <title>Web technology site</title>
   </head>
 
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
   <script src="jquery-2.2.3.min.js"></script>
     
   <script>
@@ -29,8 +31,24 @@
         return result;
       }
 
+      function getAsyncCsvServletResult(url) {
+        result = "";
+        $('.loading').removeClass("hidden");
+        xhr = new XMLHttpRequest();
+        xhr.open("GET", url, true);
+        xhr.onload = function (e) {
+          if (xhr.readyState === 4)
+            if (xhr.status === 200)
+                result = xhr.responseText;
+          $('.loading').addClass("hidden");
+          $('#csvResult').html(result);
+        }
+        xhr.send(null);
+        return result;
+      }
+
       $(function() {
-          $("#btnRequest31").click( function() {
+          $("#btnRequest31").click(function() {
               var m = $('#pr31m').val();
               var n = $('#pr31n').val();
               url = "/pract31servlet?m="+m+"&n="+n;
@@ -43,7 +61,7 @@
               // $("#divResult31").text = res;
           });
 
-          $("#btnRequest32").click( function() {
+          $("#btnRequest32").click(function() {
               var a = $('#pr32a').val();
               var b = $('#pr32b').val();
               var c = $('#pr32c').val();
@@ -55,14 +73,14 @@
                 $("#divResult32").html("Please, insert correct values");
           });
 
-          $("#btnRequest33").click( function() {
+          $("#btnRequest33").click(function() {
               url = "/pract33servlet";
               response = getServletResult(url);
               if (response)
                 $("#divResult33").html(result);
           });
 
-          $("#btnRequest34").click( function() {
+          $("#btnRequest34").click(function() {
               url = "/pract34servlet";
               response = getServletResult(url);
               if (response)
@@ -77,92 +95,201 @@
                 var gender = $('#gender').val();
                 $('#formConstrainssResult').load( "/formconstrains?email="+email+"&password="+password+"&name="+name+"&phone="+phone+"&gender="+gender);
           });
+
+          $('#btnCsvRequest').click(function() {
+                var filter = $('#txtNameFilter').val();
+                var district = $('#listDistrict').val();
+                getAsyncCsvServletResult("/csvservlet?filter="+filter+"&order=asc"+"&district="+district);
+          });
+          $('#headerPract31').click(function() {
+                // $('#divPract32').toggleClass("hidden");
+          });
+          $('#headerPract32').click(function() {
+                // $('#divPract32').toggleClass("hidden");
+          });
+          $('#headerPract33').click(function() {
+                // $('#divPract33').toggleClass("hidden");
+          });
+          $('#headerPract34').click(function() {
+                // $('#divPract34').toggleClass("hidden");
+          });
+          $('#headerConstrains').click(function() {
+                // $('#divConstrains').toggleClass("hidden");
+          });
+          $('#googleMap').click(function() {
+                $('#divMap').toggleClass("hidden");
+                initialize();
+          });
+          $('#headerCsvParsing').click(function() {
+                $('#divCsvParsing').toggleClass("hidden");
+                $('#listDistrict').load( "/csvservlet?request=districtList");
+          });
       });
+  </script>
+  <script>  
+      function search(element)
+      {
+          var filter = $('#txtNameFilter').val();
+          var district = $('#listDistrict').val();
+          var order = "asc";
+          if (element)
+          {
+              var caret = element.childNodes[1];
+              if (caret)
+                  if (caret.className.match('down')) {
+                      caret.className = caret.className.replace('down', 'up');
+                      order = "asc";
+                  }
+                  else if (caret.className.match('up')) {
+                      caret.className = caret.className.replace('up', 'down');
+                      order = "desc";
+                  }
+              else
+                  order = "asc";
+              attribute = element.getAttribute("data-attribute");
+          }
+          getAsyncCsvServletResult("/csvservlet?filter="+filter+"&order="+order+"&district="+district);
+      }
   </script>
 
   <body>
-    <h1>Hello App Engine!</h1>
+    <div>
+    <div class="welcome"><h1>
+      <img src="img/owl.png">
+      <span></span>Welcome! There is nothing here. Go away.</h1>
+    </div>
+
+    <div class="author-info">
+      <div class="author-name">
+        <a>Воробьёв Алексей Игоревич</a>
+      </div>
+      <div class="author-group">
+        <a>Группа: P3355</a>
+      </div>
+      <div class="author-faculty">
+        <a>Университет ИТМО. КТиУ. ПБКС</a>
+      </div>
+      <div class="author-email">
+        <a>Почта: zenti.asteris@gmail.com</a>
+      </div>
+      <div class="author-year">
+        <a>2016 год</a>
+      </div>
+    </div>
+
+    <a href="./index.bookshelf.html"><h3><div class="selectline"></div>My Site</h3></a>
+
     <div class="practice">
-      <div class="pract31">
-        <h3>Practice 3.1</h3>
-        <a>Print closest number to 10 from m and n</a>
-        <div class="form">
-          m = 
-          <input id="pr31m" type="text">
-          <br>
-          n = 
-          <input id="pr31n" type="text">
-          <br>
-          <button id="btnRequest31">Send</button>
-          <br>
-          <div id="divResult31"></div>
+      <div>
+        <h3 class="listHeader" id="headerPract31"><div class="selectline"></div>Practice 3.1</h3>
+        <div id="divPract31" class="pract31 plate hidden">
+          <a>Print closest number to 10 from m and n</a>
+          <div class="form">
+            m =
+            <input id="pr31m" type="text">
+            n = 
+            <input id="pr31n" type="text">
+            <br>
+            <button id="btnRequest31">Send</button>
+            <br>
+            <div id="divResult31"></div>
+          </div>
         </div>
       </div>
 
-      <br><br>
-
-      <div class="pract32">
-        <h3>Practice 3.2</h3>
-        <a>Solve quadratic equation</a>
-        <div class="form">
-          <input type="text" id="pr32a">
-          x<sup>2</sup>+
-          <input id="pr32b" type="text">
-          x+
-          <input id="pr32c" type="text">
-          =0
-          <br>
-          <button id="btnRequest32">Solve</button>
-          <br>
-          <div id="divResult32"></div>
+      <div>
+        <h3 class="listHeader" id="headerPract32"><div class="selectline"></div>Practice 3.2</h3>
+        <div id="divPract32" class="pract32 plate hidden">
+          <a>Solve quadratic equation</a>
+          <div class="form">
+            <input type="text" id="pr32a">
+            x<sup>2</sup>+
+            <input id="pr32b" type="text">
+            x+
+            <input id="pr32c" type="text">
+            =0
+            <br>
+            <button id="btnRequest32">Solve</button>
+            <br>
+            <div id="divResult32"></div>
+          </div>
         </div>
       </div>
-
-      <br><br>
       
-      <h3>Practice 3.3</h3>
-      <a>Get 8x5 array with values in range [10;99]</a>
-      <div class="form">
-          <button id="btnRequest33">Get array</button>
-          <br>
-          <div id="divResult33"></div>
+      <div>
+        <h3 class="listHeader" id="headerPract33"><div class="selectline"></div>Practice 3.3</h3>
+        <div id="divPract33" class="pract33 plate hidden">
+          <a>Get 8x5 array with values in range [10;99]</a>
+          <div class="form">
+              <button id="btnRequest33">Get array</button>
+              <br>
+              <div id="divResult33"></div>
+          </div>
+        </div>
       </div>
 
-      <br><br>
-
-      <h3>Practice 3.4</h3>
-      <a>Get 8x5 array with values in range [-99;99]. Print maximum value of the array</a>
-      <div class="form">
-          <button id="btnRequest34">Get array</button>
-          <br>
-          <div id="divResult34"></div>
+      <div>
+        <h3 class="listHeader" id="headerPract34"><div class="selectline"></div>Practice 3.4</h3>
+        <div id="divPract34" class="pract34 plate hidden">
+          <a>Get 8x5 array with values in range [-99;99]. Print maximum value of the array</a>
+          <div class="form">
+              <button id="btnRequest34">Get array</button>
+              <br>
+              <div id="divResult34"></div>
+          </div>
+        </div>
       </div>
+    </div>
 
-      <br>
+    <div>
+      <h3 class="listHeader" id="headerConstrains" class="exercise-container"><div class="selectline"></div>Constrains check form</h3>
+      <div id="divConstrains" class="constrains plate hidden">
+        <label>Email</label>
+        <input id="txtEmail" type="text">
+        <label>Password</label>
+        <input id="txtPassword" type="password">
+        <label>Name</label>
+        <input id="txtName" type="text">
+        <label>Phone</label>
+        <input id="txtPhone" type="text">
+        <label>Gender</label>
+        <select id="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+        <button id="btnRequestConstrForm">Send</button>
+        <div id="formConstrainssResult"></div>
+      </div>
+    </div>
 
-      <h3>Constrains check form</h3>
-      <a>Email</a>
-      <input id="txtEmail" type="text">
-      <br><br>
-      <a>Password</a>
-      <input id="txtPassword" type="password">
-      <br><br>
-      <a>Name</a>
-      <input id="txtName" type="text">
-      <br><br>
-      <a>Phone</a>
-      <input id="txtPhone" type="text">
-      <br><br>
-      <select id="gender">
-          <option value="male">Male</option>
-          <option value="female">Female</option>
+    <div>
+      <h3 class="listHeader" id="googleMap" class="map-container"><div class="selectline"></div>Google Map</h3>
+    </div>
+    <div id="divMap" class="hidden">
+      <div id="map-canvas"></div> 
+    </div>
+
+    <div>
+      <h3 class="listHeader" id="headerCsvParsing" class="exercise-container"><div class="selectline"></div>CSV parsing</h3>
+    </div>
+    <div id="divCsvParsing" class="csv hidden">
+      <label>Поиск по названию</label>
+      <input id="txtNameFilter" type="text">
+      <label>Район</label>
+      <select id="listDistrict">
+          <option value="none">&lt;Без сортировки&gt;</option>
+          <option value="none">Загрузка данных...</option>
       </select>
-      <br><br>
-      <button id="btnRequestConstrForm">Send</button>
-      <div id="formConstrainssResult"></div>
+      <div class="loadCsv">
+        <button id="btnCsvRequest">Search</button>
+        <img class="loading hidden" src="img/loading.gif">
+      </div>
+      <div id="csvResult"></div>
+    </div>
 
     </div>
 
     <script src="js/main.js"></script>
+    <script src="js/map.js"></script>
   </body>
 </html>
