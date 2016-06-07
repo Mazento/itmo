@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- The HTML 4.01 Transitional DOCTYPE declaration-->
+<!-- above set at the top of the file will set     -->
+<!-- the browser's rendering engine into           -->
+<!-- "Quirks Mode". Replacing this declaration     -->
+<!-- with a "Standards Mode" doctype is supported, -->
+<!-- but may lead to some differences in layout.   -->
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/bookshelf.css">
+    <link rel="stylesheet" href="css/books.css">
+    <title>Книжная полка</title>
+  </head>
+
+  <script>
+      function init() {
+        loadNavigation(5);
+      }
+  </script>
+
+<body onload="init()" class="fleet">
+        <div class="wrap">
+        <section class="lk_template">
+            <div class="container clearfix">
+                <section class="right-col pull_left">
+                    <div id="navigation">
+                    </div>
+                    <div class="dashboard plate">
+                        <div id="dash">
+                            <div style="overflow: hidden">
+                            <h1 align="center">Полезные ресурсы</h1>
+                              <p><a href="https://www.goodreads.com">Goodreads</a> - крупный англоязычный книжный ресурс, содержащий огромное количество рецензий, отзывов и оценок на литературу.</p><p><a href="http://booktracker.org/">Booktracker</a> - книжный трекер, на котором можно абсолютно нелегально скачать книги в различных форматах, включая аудиокниги.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="js/bookshelf.js"></script>
+    </body>
+</html>

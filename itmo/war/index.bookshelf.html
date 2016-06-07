@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- The HTML 4.01 Transitional DOCTYPE declaration-->
+<!-- above set at the top of the file will set     -->
+<!-- the browser's rendering engine into           -->
+<!-- "Quirks Mode". Replacing this declaration     -->
+<!-- with a "Standards Mode" doctype is supported, -->
+<!-- but may lead to some differences in layout.   -->
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/bookshelf.css">
+    <link rel="stylesheet" href="css/books.css">
+    <title>Книжная полка</title>
+  </head>
+  
+  <script>
+      function init() {
+        loadNavigation(1);
+      }
+  </script>
+
+<body onload="init()" class="fleet">
+        <div class="wrap">
+        <section class="lk_template">
+            <div class="container clearfix">
+                <section class="right-col pull_left">
+                    <div id="navigation">
+                    </div>
+                    <div class="dashboard plate">
+                        <div id="dash">
+                            <div class="about-dash" style="overflow: hidden">
+                              <h1 align="center">Книжная полка</h1>
+                              <img class="index-book-image" src="img/book_PNG2117.png">
+                              <p>Этот сайт представляет из себя своеобразную "книжную полку" из книг, которые разработчик сайта прочитал или собирается прочитать.</p>
+                              <p>Книги отсортированы по основным жанрам содержащихся книг для простоты ориентирования.</p>
+                              <p>Каждая книга или серия книг имеет краткую информацию об имени автора, название цикла, количество книг в серии и оценку по пятибальной шкале на основе данных с портала goodreads.com</p>
+                              <p>При наведении на обложку раскрывается описание серии. По умолчанию оно скрыто для лаконичности сайта.</p>
+                              <p>Кроме того, на сайте есть страничка с ссылками на полезные электронные ресурсы, относящиеся к тематике данного сайта.</p>
+                              <p>Приятного чтения!</p>
+                              <p>P.S. Информация по реализации:</p>
+                              <p>На этом сайте html страницы получаются напрямую с сервера, однако контент для них (панель навигации, контейнеры для книг) подгружается динамически через Java сервлеты. В частности, контейнеры представляют собой шаблонизированные файлы, в которые подставляются соответствующие данные, распарсенные из дескрипторов книг. В связи с чем, страницы загружаются медленнее, чем если бы весь контент был захардкожен, однако такая реализация обладает лучшей масштабируемостью и меньшим количеством быдлокода.</p>
+                              <p>P.S.S. А ещё разработчику этого сайта безумно лень перебивать все книги из своей коллекции. Поэтому радуйтесь той парочке циклов, что тут есть :)</p>
+                              <p>Спасибо.</p>
+                            </div>
+                          <p align="center">2016 год.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="js/bookshelf.js"></script>
+    </body>
+</html>

@@ -28,6 +28,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>FormConstrains</servlet-name>
 		<servlet-class>com.form_constrains.FormConstrainsServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>BookshelfServlet</servlet-name>
+		<servlet-class>com.bookshelf.BookshelfServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CsvServlet</servlet-name>
+		<servlet-class>com.csv.CsvServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>Itmo</servlet-name>
 		<url-pattern>/itmo</url-pattern>
@@ -51,6 +59,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
 		<servlet-name>FormConstrains</servlet-name>
 		<url-pattern>/formconstrains</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>BookshelfServlet</servlet-name>
+		<url-pattern>/bookshelfservlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CsvServlet</servlet-name>
+		<url-pattern>/csvservlet</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>

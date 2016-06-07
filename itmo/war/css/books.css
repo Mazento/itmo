@@ -1,0 +1,61 @@
+.book-container {
+    padding-top: 15px;
+    clear:both;
+}
+.book-container img {
+    display:block;
+    margin:0 auto;
+    width: 150px; 
+    height: auto;
+    float: left;
+    z-index: 10;
+    position: relative;
+}
+
+.index-book-image {
+    display:block;
+    margin:0 auto;
+    margin-left: 10px;
+    width: 150px; 
+    height: auto;
+    float: left;
+    z-index: 10;
+    position: relative;
+    padding-right: 25px;
+}
+
+.about-dash p {
+    padding-right: 25px;
+    text-align: justify;
+}
+
+p {
+    color:#092a36;
+    display:block;
+    font-size:14px;
+    font-weight:700;
+}
+
+.book-container .desc {
+    text-align: justify;
+    visibility: hidden;
+    margin-left: -450px;
+    float:left;
+    width: 450px;
+    opacity: 0.5;
+    -webkit-transition: 0.25s ease-in-out;
+    transition: 0.25s ease-in-out;
+}
+
+.book-container .desc.opened {
+    visibility: visible;
+    margin-left: 10px;
+    opacity: 1;
+    -webkit-transform: translate(3px,0);
+    transform: translate(3px,0);
+}
+
+.book-container .info {
+    margin-left: 20px;
+    float:left;
+}

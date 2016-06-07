@@ -393,7 +393,7 @@ header {
     z-index:1;
     }
 .container {
-    width:940px;
+    width:1000px;
     margin:0 auto;
     }
 .promo {
@@ -743,8 +743,7 @@ aside {
     width:220px;
     }
 .right-col {
-    width:700px;
-    margin-left:20px;
+    width:100%;
     }
 .plate {
     display:block;
@@ -775,10 +774,12 @@ aside {
     font-weight:400;
     color:#8d8d8d;
     }
-.search-wrap {
+.search-wrap,
+.search-wrap-ap {
     position:relative;
     }
-.search-wrap .search-input {
+.search-wrap .search-input,
+.search-wrap-ap .search-input {
     padding-left:34px;
     padding-right:38px;
     background:#f9fbfd url(../img/icon-search.png) 9px 8px no-repeat;
@@ -801,8 +802,6 @@ aside {
     border-color:#bfbfbf #c8c8c8 #9d9d9d;
     }
 .caret {
-    margin-left: 10px; 
-    margin-top: 4px;
     display:inline-block;
     line-height:inherit;
     width:12px;
@@ -810,10 +809,7 @@ aside {
     margin-top:12px;
     background:url(../img/icon-caret.png) 0 0 no-repeat;
     }
-.caret.down {
-    background-position:0 0;
-}
-.caret.up {
+.open .caret {
     background-position:-12px 0;
     }
 .open .selector {
@@ -862,6 +858,22 @@ aside {
 .autocomplete_vehicle .owner_name {
     font-size:12px;
     }
+.autocomplete_user {
+    cursor: pointer;
+    border-bottom:1px solid #cdcdcb;
+}
+.autocomplete_user:hover {
+    background-color:#fffbd6;
+    }
+.autocomplete_user p {
+    margin:6px 0;
+    font-size:14px;
+}
+.autocomplete_user .pull_right p {
+    width:200px;
+}.autocomplete_user .pull_left p {
+    margin-left: 15px;
+}
 .vehicle_photo_tumb img {
     display:block;
     width:90px;
@@ -912,14 +924,11 @@ aside .vehicle_photo {
 .general_status .pull_right {
     width:70px;
     }
-.status-error {
-    color:#ed1c24 !important;
-    }
-.status-warning {
-    color:#ed8b1c !important;
+.status-failure {
+    color:#ed1c24;
     }
 .status-ok {
-    color:#39b54a !important;
+    color:#39b54a;
     }
 .fleet .owner_phone {
     background:url(../img/icon-phone.png) 0 0 no-repeat;
@@ -1093,14 +1102,27 @@ aside .vehicle_photo {
 .tabs li.active a:hover span {
     border-bottom:none;
     }
-.tabs li.third {
+.return img {
+    margin-left: 5px;
+}
+.tabs li.return a {
+    color: #D92826;
+    padding-right: 25px;
+}
+.tabs li.fifth {
+    z-index:1;
+    }
+.tabs li.fourth {
     z-index:2;
     }
-.tabs li.second {
+.tabs li.third {
     z-index:3;
     }
-.tabs li.first {
+.tabs li.second {
     z-index:4;
+    }
+.tabs li.first {
+    z-index:5;
     -moz-border-radius-topleft:3px;
     -webkit-border-top-left-radius:3px;
     border-top-left-radius:3px;
@@ -1212,7 +1234,7 @@ aside .vehicle_photo {
     text-decoration:none;
     }
 .pagination a.page-numbers:hover {
-    background-color:#fff !important;
+    background-color:#fff;
     }
 .pagination a.page-numbers {
     color:#2cb0dc;
@@ -1223,8 +1245,8 @@ aside .vehicle_photo {
     width:31px;
     border:1px solid #979797 !important;
     margin:0px 0px 0px -1px;
-    color:#6e6965;
-    background:#bbc2c5;
+    color:#6e6965 !important;
+    background:#bbc2c5 !important;
     }
 .pagination a.page-numbers.prev {
     background:url(../img/icon-prev.png) 50% 54% no-repeat;
@@ -1333,6 +1355,14 @@ aside .vehicle_photo {
     margin-left:63px;
     text-transform:none;
     }
+.change-unique-pass {
+    width:90px;
+    display:inline-block;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+    margin-left:10px;
+    text-transform:none;
+}
 .breadcrumbs {
     padding:20px 0 0 20px;
     font-size:13px;
@@ -1452,6 +1482,20 @@ aside .vehicle_photo {
     font-weight:bold;
     }
 /* On Off switch from Control panel */
+.dimmed {
+    position: relative;
+    }
+.dimmed:after {
+    content: " ";
+    z-index: 10;
+    display: block;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.5);
+    }
 .onoffswitch {
     float:right;
     position:relative;
@@ -1585,6 +1629,9 @@ aside .vehicle_photo {
     cursor:pointer;
     box-shadow:none !important;
 }
+.camera-container {
+    font-size: 0px;
+}
 .camera-container:hover .arrow {
     margin-top: 0%;
     opacity: 1.0;
@@ -1603,15 +1650,45 @@ aside .vehicle_photo {
 .admin-panel-list {
     float: left;
 }
-.admin-panel-list label{
+.admin-panel-list label {
     cursor: pointer;
 }
 .admin-panel-func {
     margin:0 auto;
     width: 50%;
 }
+.admin-panel-func input[type="text"] {
+    margin:0px !important;
+}
+.admin-panel-func input:-moz-placeholder {
+    color:#5e5e5e
+ }
+.admin-panel-func input::-moz-placeholder {
+    color:#5e5e5e
+ }
+.admin-panel-func input:-ms-input-placeholder {
+    color:#5e5e5e
+}
+.admin-panel-func input::-webkit-input-placeholder {
+    color:#5e5e5e
+}
 .admin-panel-func label{
     margin-left: -15px;
+}
+.admin-panel-notif {
+    visibility: hidden;
+    position:absolute;
+}
+.admin-panel-notif input[type="text"], 
+.admin-panel-notif select {
+    margin: auto auto;
+    width: 180px;
+}
+.admin-panel-notif input[type="radio"] {
+    margin-left: 15px;
+}
+.admin-panel-notif .apanel-btn{
+    margin: auto auto;
 }
 .apanel-btn {
     width: 110px;
@@ -1642,21 +1719,13 @@ aside .vehicle_photo {
     border-width: 1px;
     border-color: #dfdfdf #c8c8c8 #9d9d9d;
 }
-.list_csv p {
-    color: #6e6965;
-    /*margin-top: -15px;*/
+.nav_raise {
+    margin-top: 37px !important;
 }
-.sort-heading:hover {
-    color: #3D3D3D;
-    cursor: pointer;
+.nav_raise .username {
+    margin-top:-19px;
 }
-.sort-heading.selected {
-    color: #3D3D3D;
-}
-.list_csv .row:hover{
-    background-color: #D3F8F2;
-    cursor: pointer;
-}
+
 
 /* ==========================================================================
    Helper classes
